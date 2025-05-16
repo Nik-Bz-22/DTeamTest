@@ -8,6 +8,12 @@
               rel="stylesheet" />
         <meta name="description" content="A list of CVs" />
         <meta name="keywords" content="CV, Resume, Skills, Projects" />
+        <style>
+            .main-container {
+                width: 100%;
+                max-width: 1500px;
+            }
+        </style>
     </head>
     <body>
         <div class="container mt-5">
@@ -20,10 +26,15 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ cv.firstname }} {{ cv.lastname }}</h5>
                                     <p class="card-text">
-                                        <strong>Skills:</strong> {{ cv.skills }}
+                                        <strong>Skills:</strong>
+                                        {% for skill in cv.skills_preview.all %}
+                                            {{ skill.name }}
+                                            {% if not forloop.last %},{% endif %}
+                                        {% endfor %}
+                                        {% if cv.skills_count_remaining > 0 %}... + {{ cv.skills_count_remaining }}{% endif %}
                                     </p>
                                     <p class="card-text">
-                                        <strong>Bio:</strong> {{ cv.bio }}
+                                        <strong>Bio:</strong> {{ cv.bio_preview }}
                                     </p>
                                 </div>
                             </div>

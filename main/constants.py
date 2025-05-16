@@ -7,3 +7,7 @@ class ContactsTypeEnum(Enum):
     LINKEDIN = "linkedin"
     GITHUB = "github"
     WEBSITE = "website"
+
+
+SKILLS_LIMIT = 3
+BIO_CHAR_LIMIT = 100

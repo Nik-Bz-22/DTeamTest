@@ -5,12 +5,11 @@ from main.constants import ContactsTypeEnum
 class CV(models.Model):
     firstname = models.CharField(max_length=40, null=False, blank=False)
     lastname = models.CharField(max_length=40, null=False, blank=False)
-    skills = models.TextField()
     projects = models.TextField()
     bio = models.TextField()
 
     def __str__(self):
-        return f"{self.firstname} {self.lastname}: {self.skills[:20]}..."
+        return f"{self.firstname} {self.lastname}: {self.bio[:20]}..."
 
 
 class Contact(models.Model):
@@ -22,3 +21,12 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.type}: {self.value}"
+
+
+class Skill(models.Model):
+    cv = models.ForeignKey(CV, on_delete=models.CASCADE, related_name="skills")
+    name = models.CharField(max_length=100)
+    level = models.SmallIntegerField(choices=[(i, i) for i in range(1, 6)])
+
+    def __str__(self):
+        return f"{self.name}: {self.level}"

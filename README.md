@@ -1,26 +1,24 @@
 # CVProject
 
-
 ## Requirements
+
 - Python
-- Django 
-- SQLite 
+- Django
+- SQLite
 
 ## Instructions
+
 - Load fixtures:
+
 ```bash
     make load-fixtures
-  ```
+```
+
 - Run all tests:
+
 ```bash
     make run-all-tests
-  ```
-
-
-
-
-
-
+```
 
 ## Task description
 
@@ -53,30 +51,30 @@ Follow PEP 8 and other style guidelines, use clear and concise commit messages a
 
 1.  Create a New Django Project. Name it something like CVProject.
 
-      * Use the Python version set up in Task 2 and the latest stable Django release.
-      * Use SQLite as your database for now.
+    - Use the Python version set up in Task 2 and the latest stable Django release.
+    - Use SQLite as your database for now.
 
 2.  Create an App and Model. Create a Django app (for example, main).
 
-      * Define a CV model with fields like firstname, lastname, skills, projects, bio, and contacts.
-      * Organize the data in a way that feels efficient and logical.
+    - Define a CV model with fields like firstname, lastname, skills, projects, bio, and contacts.
+    - Organize the data in a way that feels efficient and logical.
 
 3.  Load Initial Data with Fixtures. Create a fixture that contains at least one sample CV instance.
 
-      * Include instructions in README.md on how to load the fixture.
+    - Include instructions in README.md on how to load the fixture.
 
 4.  List Page View and Template. Implement a view for the main page (e.g., /) to display a list of CV entries.
 
-      * Use any CSS library to style them nicely.
-      * Ensure the data is retrieved from the database efficiently.
+    - Use any CSS library to style them nicely.
+    - Ensure the data is retrieved from the database efficiently.
 
 5.  Detail Page View. Implement a detail view (e.g., /cv/\<id\>/) to show all data for a single CV.
 
-      * Style it nicely and ensure efficient data retrieval.
+    - Style it nicely and ensure efficient data retrieval.
 
 6.  Tests. Add basic tests for the list and detail views.
 
-      * Update README.md with instructions on how to run these tests.
+    - Update README.md with instructions on how to run these tests.
 
 **Task 2: PDF Generation Basics**
 
@@ -93,21 +91,21 @@ Follow PEP 8 and other style guidelines, use clear and concise commit messages a
 
 1.  Create a RequestLog Model. You can put this in the existing app or a new app (e.g., audit).
 
-      * Include fields such as timestamp, HTTP method, path, and optionally other details like query string, remote IP, or logged-in user.
+    - Include fields such as timestamp, HTTP method, path, and optionally other details like query string, remote IP, or logged-in user.
 
 2.  Implement Logging Middleware. Write a custom Django middleware class that intercepts each incoming request.
 
-      * Create a RequestLog record in the database with the relevant request data. Keep it efficient.
+    - Create a RequestLog record in the database with the relevant request data. Keep it efficient.
 
 3.  Recent Requests Page. Create a view (e.g., /logs/) showing the 10 most recent logged requests, sorted by timestamp descending.
 
-      * Include a template that loops through these entries and displays their timestamp, method, and path.
+    - Include a template that loops through these entries and displays their timestamp, method, and path.
 
 4.  Test Logging. Ensure your tests verify the logging functionality.
 
 **Task 5: Template Context Processors**
 
-1.  Create settings\_context. Create a context processor that injects your entire Django settings into all templates.
+1.  Create settings_context. Create a context processor that injects your entire Django settings into all templates.
 2.  Settings Page. Create a view (e.g., /settings/) that displays DEBUG and other settings values made available by the context processor.
 
 **Task 6: Docker Basics**

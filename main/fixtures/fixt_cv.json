@@ -5,7 +5,6 @@
     "fields": {
       "firstname": "John",
       "lastname": "Doe",
-      "skills": "Python, Django, PostgreSQL",
       "projects": "Portfolio Site, API Service",
       "bio": "Senior backend developer with 5+ years of experience."
     }
@@ -16,7 +15,6 @@
     "fields": {
       "firstname": "Jane",
       "lastname": "Smith",
-      "skills": "JavaScript, React, CSS",
       "projects": "E-commerce Frontend, UI Library",
       "bio": "Frontend developer with a passion for clean UI."
     }
@@ -27,7 +25,6 @@
     "fields": {
       "firstname": "Alex",
       "lastname": "Brown",
-      "skills": "Python, Data Science, Pandas",
       "projects": "Data Dashboard, ML Pipeline",
       "bio": "Data scientist focused on visualization and ML."
     }
@@ -84,6 +81,60 @@
       "cv": 3,
       "type": "WEBSITE",
       "value": "https://alexbrown.dev"
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 1,
+    "fields": {
+      "cv": 1,
+      "name": "Python",
+      "level": 5
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 2,
+    "fields": {
+      "cv": 1,
+      "name": "Django",
+      "level": 4
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 3,
+    "fields": {
+      "cv": 2,
+      "name": "JavaScript",
+      "level": 5
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 4,
+    "fields": {
+      "cv": 2,
+      "name": "React",
+      "level": 4
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 5,
+    "fields": {
+      "cv": 3,
+      "name": "Data Science",
+      "level": 5
+    }
+  },
+  {
+    "model": "main.skill",
+    "pk": 6,
+    "fields": {
+      "cv": 3,
+      "name": "Pandas",
+      "level": 4
     }
   }
 ]

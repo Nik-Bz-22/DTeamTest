@@ -10,14 +10,27 @@
         <meta name="keywords" content="CV, Resume, Skills, Projects, Contacts" />
         <style>
             .main-container {
-                width: 100%;
-                max-width: 1500px;
+                max-width: 800px;
+                margin: auto;
+            }
+            .none-styled_li {
+                list-style-type: none;
             }
         </style>
     </head>
     <body>
-        <div class="container mt-5 main-container">
+        <div class="container mt-5">
             <h1 class="text-center">{{ cv.firstname }} {{ cv.lastname }}</h1>
+            <ul>
+                {% for contact in cv.contacts.all %}
+                    <li class="none-styled_li">
+                        <i>{{ contact.type }}:</i> {{ contact.value }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>
+                <strong>Bio:</strong> {{ cv.bio }}
+            </p>
             <p>
                 <strong>Skills:</strong>
                 {% for skill in cv.skills.all %}
@@ -28,19 +41,6 @@
             <p>
                 <strong>Projects:</strong> {{ cv.projects }}
             </p>
-            <p>
-                <strong>Bio:</strong> {{ cv.bio }}
-            </p>
-            <h3>Contacts</h3>
-            <ul>
-                {% for contact in cv.contacts.all %}
-                    <li>
-                        <strong>{{ contact.type }}:</strong> {{ contact.value }}
-                    </li>
-                {% endfor %}
-            </ul>
-            <a href="{% url 'download_cv_pdf' cv.id %}" class="btn btn-success">Download PDF</a>
-            <a href="{% url 'cv_list' %}" class="btn btn-primary">Back to List</a>
         </div>
     </body>
 </html>
