@@ -1,0 +1,89 @@
+[
+  {
+    "model": "main.cv",
+    "pk": 1,
+    "fields": {
+      "firstname": "John",
+      "lastname": "Doe",
+      "skills": "Python, Django, PostgreSQL",
+      "projects": "Portfolio Site, API Service",
+      "bio": "Senior backend developer with 5+ years of experience."
+    }
+  },
+  {
+    "model": "main.cv",
+    "pk": 2,
+    "fields": {
+      "firstname": "Jane",
+      "lastname": "Smith",
+      "skills": "JavaScript, React, CSS",
+      "projects": "E-commerce Frontend, UI Library",
+      "bio": "Frontend developer with a passion for clean UI."
+    }
+  },
+  {
+    "model": "main.cv",
+    "pk": 3,
+    "fields": {
+      "firstname": "Alex",
+      "lastname": "Brown",
+      "skills": "Python, Data Science, Pandas",
+      "projects": "Data Dashboard, ML Pipeline",
+      "bio": "Data scientist focused on visualization and ML."
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 1,
+    "fields": {
+      "cv": 1,
+      "type": "EMAIL",
+      "value": "john.doe@example.com"
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 2,
+    "fields": {
+      "cv": 1,
+      "type": "LINKEDIN",
+      "value": "https://linkedin.com/in/johndoe"
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 3,
+    "fields": {
+      "cv": 2,
+      "type": "EMAIL",
+      "value": "jane.smith@example.com"
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 4,
+    "fields": {
+      "cv": 2,
+      "type": "GITHUB",
+      "value": "https://github.com/janesmith"
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 5,
+    "fields": {
+      "cv": 3,
+      "type": "EMAIL",
+      "value": "alex.brown@example.com"
+    }
+  },
+  {
+    "model": "main.contact",
+    "pk": 6,
+    "fields": {
+      "cv": 3,
+      "type": "WEBSITE",
+      "value": "https://alexbrown.dev"
+    }
+  }
+]
