@@ -9,3 +9,7 @@ run-all-tests:
 
 pre-commit-run-all:
 	@pre-commit run --all-files
+
+migrate:
+	@python manage.py makemigrations
+	@python manage.py migrate
