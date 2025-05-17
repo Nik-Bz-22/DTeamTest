@@ -21,5 +21,21 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "55672:5672"
+      - "15672:15672"
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: celery -A DTeamTest worker --loglevel=info
+    depends_on:
+      - rabbitmq
+      - db
+
 volumes:
   postgres_data:

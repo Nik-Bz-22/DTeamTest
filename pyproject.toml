@@ -12,6 +12,8 @@ python-dotenv = "^1.1.0"
 weasyprint = "^65.1"
 djangorestframework = "^3.16.0"
 psycopg = "^3.2.9"
+celery = "^5.5.2"
+kombu = "^5.5.3"
 
 
 [build-system]

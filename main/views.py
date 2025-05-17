@@ -1,11 +1,15 @@
+from django.forms import model_to_dict
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import ListView, DetailView
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import CV
 from tools.pdf_generator import generate_pdf
+from tools.email_validator import is_valid_email
 from main.constants import SKILLS_LIMIT, BIO_CHAR_LIMIT
 from rest_framework.viewsets import ModelViewSet
 from .serializers import CVSerializer
+from main.tasks.send_cv_email_pdf import send_cv_pdf_email
 
 
 class CVListView(ListView):
@@ -52,3 +56,17 @@ class CVViewSet(ModelViewSet):
 
 def settings_view(request):
     return render(request, "main/settings.html")
+
+
+@csrf_exempt
+def send_cv_email(request, pk):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        if not is_valid_email(email):
+            return HttpResponse(content="Invalid email address.", status=400)
+
+        cv = CV.objects.get(pk=pk)
+        context = {"cv": model_to_dict(cv)}
+        send_cv_pdf_email.delay("main/cv_pdf.html", context, email)
+        return redirect("cv_detail", pk=pk)
+    return HttpResponse(content="Invalid request method.", status=400)
