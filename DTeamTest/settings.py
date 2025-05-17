@@ -33,7 +33,7 @@ ALLOWED_HOSTS: list = []
 
 
 CUSTOM_APPS = ["main"]
-THIRD_PARTY_APPS: list = []
+THIRD_PARTY_APPS: list = ["rest_framework"]
 DEFAULT_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
