@@ -1,0 +1,8 @@
+db.sqlite3
+README.md
+.pre-commit-config.yaml
+.gitignore
+docker-compose.yml
+Dockerfile
+.python-version
+node_modules

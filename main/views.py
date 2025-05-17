@@ -50,8 +50,5 @@ class CVViewSet(ModelViewSet):
     serializer_class = CVSerializer
 
 
-# main/views.py
-
-
 def settings_view(request):
     return render(request, "main/settings.html")
