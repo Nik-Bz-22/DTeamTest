@@ -4,6 +4,8 @@ from django.shortcuts import get_object_or_404
 from .models import CV
 from tools.pdf_generator import generate_pdf
 from main.constants import SKILLS_LIMIT, BIO_CHAR_LIMIT
+from rest_framework.viewsets import ModelViewSet
+from .serializers import CVSerializer
 
 
 class CVListView(ListView):
@@ -41,3 +43,8 @@ def download_cv_pdf(request, pk):
         f'attachment; filename="{cv.firstname}_{cv.lastname}_CV.pdf"'
     )
     return response
+
+
+class CVViewSet(ModelViewSet):
+    queryset = CV.objects.all()
+    serializer_class = CVSerializer
