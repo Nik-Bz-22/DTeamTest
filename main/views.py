@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from .models import CV
 from tools.pdf_generator import generate_pdf
 from main.constants import SKILLS_LIMIT, BIO_CHAR_LIMIT
@@ -48,3 +48,10 @@ def download_cv_pdf(request, pk):
 class CVViewSet(ModelViewSet):
     queryset = CV.objects.all()
     serializer_class = CVSerializer
+
+
+# main/views.py
+
+
+def settings_view(request):
+    return render(request, "main/settings.html")
