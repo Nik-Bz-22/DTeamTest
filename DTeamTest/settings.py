@@ -32,7 +32,7 @@ ALLOWED_HOSTS: list = []
 # Application definition
 
 
-CUSTOM_APPS = ["main"]
+CUSTOM_APPS = ["main", "audit"]
 THIRD_PARTY_APPS: list = ["rest_framework"]
 DEFAULT_APPS = [
     "django.contrib.admin",
@@ -45,7 +45,7 @@ DEFAULT_APPS = [
 INSTALLED_APPS = DEFAULT_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 
-CUSTOM_MIDDLEWARE: list = []
+CUSTOM_MIDDLEWARE: list = ["audit.middleware.RequestLoggingMiddleware"]
 
 DEFAULT_MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
