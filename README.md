@@ -4,7 +4,8 @@
 
 - Python
 - Django
-- SQLite
+- Docker
+- make
 
 ## Instructions
 
@@ -19,6 +20,21 @@
 ```bash
     make run-all-tests
 ```
+
+
+- Run the project in Docker:
+
+```bash
+    make docker-run
+```
+
+- Run the project locally:
+
+```bash
+    make run
+```
+
+
 
 ## Task description
 
