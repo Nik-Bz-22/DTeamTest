@@ -10,4 +10,4 @@ class ContactsTypeEnum(Enum):
 
 
 SKILLS_LIMIT = 3
-BIO_CHAR_LIMIT = 100
+BIO_CHAR_LIMIT = 48

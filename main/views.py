@@ -32,10 +32,10 @@ class CVListView(ListView):
             cv.skills_count = cv.skills.count()
             cv.skills_count_remaining = cv.skills_count - SKILLS_LIMIT
             cv.bio_preview = (
-                cv.bio[:BIO_CHAR_LIMIT] + "..."
+                cv.bio[:BIO_CHAR_LIMIT] + " ..."
                 if len(cv.bio) > BIO_CHAR_LIMIT
                 else cv.bio
-            )
+            ).replace("\n", " ")
         return context
 
 
