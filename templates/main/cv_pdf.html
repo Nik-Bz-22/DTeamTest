@@ -1,3 +1,4 @@
+{% load utils %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,7 +23,7 @@
         <div class="container mt-5">
             <h1 class="text-center">{{ cv.firstname }} {{ cv.lastname }}</h1>
             <ul>
-                {% for contact in cv.contacts.all %}
+                {% for contact in cv|as_list:"contacts" %}
                     <li class="none-styled_li">
                         <i>{{ contact.type }}:</i> {{ contact.value }}
                     </li>
@@ -33,7 +34,7 @@
             </p>
             <p>
                 <strong>Skills:</strong>
-                {% for skill in cv.skills.all %}
+                {% for skill in cv|as_list:"skills" %}
                     {{ skill.name }}
                     {% if not forloop.last %},{% endif %}
                 {% endfor %}

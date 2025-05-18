@@ -9,6 +9,12 @@
 
 ## Instructions
 
+- Run the project locally:
+
+```bash
+    make run
+```
+
 - Load fixtures:
 
 ```bash
@@ -28,17 +34,21 @@
     make docker-run
 ```
 
-- Run the project locally:
+
+- Create superuser in Docker:
 
 ```bash
-    make run
+    make create-superuser-docker
 ```
 
+- Load fixtures in Docker:
 
+```bash
+    make load-fixtures-docker
+```
 
 ## Task description
 
-Okay, here is the text from the file in English, without any file references:
 
 **DTEAM - Django Developer Practical Test**
 

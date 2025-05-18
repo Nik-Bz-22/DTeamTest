@@ -1,6 +1,7 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from main.models import CV, Contact, Skill
+from tools.ai_translate import ai_translate
 
 
 class CVAPITestCase(APITestCase):
@@ -71,3 +72,29 @@ class CVAPITestCase(APITestCase):
         self.assertFalse(CV.objects.filter(id=self.cv.id).exists())
         self.assertEqual(Contact.objects.filter(cv=self.cv).count(), 0)
         self.assertEqual(Skill.objects.filter(cv=self.cv).count(), 0)
+
+
+class ToolsTestCase(APITestCase):
+    def test_ai_translate(self):
+        json_data = {
+            "id": 1,
+            "firstname": "John",
+            "lastname": "Doe",
+            "projects": "Portfolio Site, API Service",
+            "bio": "Senior backend developer with 5+ years of experience.",
+            "skills": [{"name": "Python", "level": 5}, {"name": "Django", "level": 4}],
+            "contacts": [
+                {"type": "EMAIL", "value": "john.doe@example.com"},
+                {"type": "LINKEDIN", "value": "https://linkedin.com/in/johndoe"},
+            ],
+        }
+
+        target_language = "Spanish"
+        translated_data = ai_translate(json_data, target_language)
+        self.assertIsInstance(translated_data, dict)
+        self.assertIn("firstname", translated_data)
+        self.assertIn("lastname", translated_data)
+        self.assertIn("projects", translated_data)
+        self.assertIn("bio", translated_data)
+        self.assertIn("skills", translated_data)
+        self.assertIn("contacts", translated_data)
