@@ -34,7 +34,7 @@
     "pk": 1,
     "fields": {
       "cv": 1,
-      "type": "EMAIL",
+      "type": "email",
       "value": "john.doe@example.com"
     }
   },
@@ -43,7 +43,7 @@
     "pk": 2,
     "fields": {
       "cv": 1,
-      "type": "LINKEDIN",
+      "type": "linkedin",
       "value": "https://linkedin.com/in/johndoe"
     }
   },
@@ -52,7 +52,7 @@
     "pk": 3,
     "fields": {
       "cv": 2,
-      "type": "EMAIL",
+      "type": "email",
       "value": "jane.smith@example.com"
     }
   },
@@ -61,7 +61,7 @@
     "pk": 4,
     "fields": {
       "cv": 2,
-      "type": "GITHUB",
+      "type": "github",
       "value": "https://github.com/janesmith"
     }
   },
@@ -70,7 +70,7 @@
     "pk": 5,
     "fields": {
       "cv": 3,
-      "type": "EMAIL",
+      "type": "email",
       "value": "alex.brown@example.com"
     }
   },
@@ -79,7 +79,7 @@
     "pk": 6,
     "fields": {
       "cv": 3,
-      "type": "WEBSITE",
+      "type": "website",
       "value": "https://alexbrown.dev"
     }
   },

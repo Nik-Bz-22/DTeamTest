@@ -15,7 +15,7 @@ class CV(models.Model):
 class Contact(models.Model):
     cv = models.ForeignKey(CV, on_delete=models.CASCADE, related_name="contacts")
     type = models.CharField(
-        max_length=50, choices=[(tag, tag.value) for tag in ContactsTypeEnum]
+        max_length=50, choices=[(tag.value, tag.value) for tag in ContactsTypeEnum]
     )
     value = models.CharField(max_length=255)
 

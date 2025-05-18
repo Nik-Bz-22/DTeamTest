@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import CV, Contact, Skill
+from .constants import ContactsTypeEnum
 
 
 class SkillSerializer(serializers.ModelSerializer):
@@ -12,6 +13,15 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ["type", "value"]
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        try:
+            representation["type"] = ContactsTypeEnum(instance.type).value
+        except Exception:
+            pass
+
+        return representation
 
 
 class CVSerializer(serializers.ModelSerializer):
@@ -52,12 +62,10 @@ class CVSerializer(serializers.ModelSerializer):
             setattr(instance, attr, value)
         instance.save()
 
-        # Update contacts
         instance.contacts.all().delete()
         for contact_data in contacts_data:
             Contact.objects.create(cv=instance, **contact_data)
 
-        # Update skills
         instance.skills.all().delete()
         for skill_data in skills_data:
             Skill.objects.create(cv=instance, **skill_data)

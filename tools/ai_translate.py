@@ -11,7 +11,7 @@ def ai_translate(json_data: dict, target_language: str) -> dict[str, str] | None
         response = client.models.generate_content(
             model="gemini-2.0-flash",
             contents=f"""
-            Translate the following json to {target_language} don't translate json keys and as a result give me ONLY json.
+            Translate the following json to {target_language} don't translate json keys and contact info. And as a result give me ONLY json.
             Without any other test and content. After thet i want to load it in python with json.load: {json_data}""",
         )
         clear_data = response.text.split("```json")[1].split("```")[0].strip()
