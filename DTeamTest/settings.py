@@ -15,7 +15,7 @@ ALLOWED_HOSTS: list = []
 
 
 CUSTOM_APPS = ["main", "audit"]
-THIRD_PARTY_APPS: list = ["rest_framework"]
+THIRD_PARTY_APPS = ["rest_framework"]
 DEFAULT_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -27,7 +27,7 @@ DEFAULT_APPS = [
 INSTALLED_APPS = DEFAULT_APPS + CUSTOM_APPS + THIRD_PARTY_APPS
 
 
-CUSTOM_MIDDLEWARE: list = ["audit.middleware.RequestLoggingMiddleware"]
+CUSTOM_MIDDLEWARE = ["audit.middleware.RequestLoggingMiddleware"]
 
 DEFAULT_MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -112,7 +112,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# rebbitmq
 CELERY_BROKER_URL = os.getenv(
     "CELERY_BROKER_URL", "amqp://guest:guest@localhost:55672//"
 )
@@ -124,3 +123,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")

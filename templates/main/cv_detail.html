@@ -1,3 +1,4 @@
+{% load utils %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +21,7 @@
             <h1 class="text-center">{{ cv.firstname }} {{ cv.lastname }}</h1>
             <p>
                 <strong>Skills:</strong>
-                {% for skill in cv.skills.all %}
+                {% for skill in cv|as_list:"skills" %}
                     {{ skill.name }}
                     {% if not forloop.last %},{% endif %}
                 {% endfor %}
@@ -33,7 +34,7 @@
             </p>
             <h3>Contacts</h3>
             <ul>
-                {% for contact in cv.contacts.all %}
+                {% for contact in cv|as_list:"contacts" %}
                     <li>
                         <strong>{{ contact.type }}:</strong> {{ contact.value }}
                     </li>
@@ -41,14 +42,42 @@
             </ul>
             <a href="{% url 'download_cv_pdf' cv.id %}" class="btn btn-success">Download PDF</a>
             <a href="{% url 'cv_list' %}" class="btn btn-primary">Back to List</a>
-            {#            <a href="{% url 'send_cv_email' %}" class="btn btn-info">Send CV via Email</a>#}
             <form method="POST" action="{% url 'send_cv_email' cv.id %}">
                 {% csrf_token %}
+                <br>
                 <div class="mb-3">
                     <label for="email" class="form-label">Your Email</label>
                     <input type="email" class="form-control" id="email" name="email" required />
                 </div>
                 <button type="submit" class="btn btn-info">Send CV via Email</button>
-            </div>
-        </body>
-    </html>
+            </form>
+            <br>
+            <form method="GET" action="{% url 'translate_cv' cv.id %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="language" class="form-label">Select Language</label>
+                    <select class="form-select" id="language" name="language" required>
+                        <option value="cornish">Cornish</option>
+                        <option value="manx">Manx</option>
+                        <option value="breton">Breton</option>
+                        <option value="inuktitut">Inuktitut</option>
+                        <option value="kalaallisut">Kalaallisut</option>
+                        <option value="romani">Romani</option>
+                        <option value="occitan">Occitan</option>
+                        <option value="ladino">Ladino</option>
+                        <option value="northern_sami">Northern Sami</option>
+                        <option value="upper_sorbian">Upper Sorbian</option>
+                        <option value="kashubian">Kashubian</option>
+                        <option value="zazaki">Zazaki</option>
+                        <option value="chuvash">Chuvash</option>
+                        <option value="livonian">Livonian</option>
+                        <option value="tsakonian">Tsakonian</option>
+                        <option value="saramaccan">Saramaccan</option>
+                        <option value="bislama">Bislama</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning">Translate</button>
+            </form>
+        </div>
+    </body>
+</html>
